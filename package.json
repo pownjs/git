@@ -27,7 +27,8 @@
     "@pown/toolchain": "^2.0.0"
   },
   "dependencies": {
-    "@pown/async": "^2.3.0",
+    "@pown/async": "^2.4.0",
+    "@pown/leaks": "^2.0.0",
     "isomorphic-git": "^0.51.12"
   },
   "pown": {
