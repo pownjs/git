@@ -28,8 +28,11 @@
   },
   "dependencies": {
     "@pown/async": "^2.4.0",
-    "@pown/leaks": "^2.0.0",
+    "@pown/leaks": "^2.1.0",
     "isomorphic-git": "^0.51.12"
+  },
+  "engines": {
+    "node": ">=10.5.0"
   },
   "pown": {
     "commands": [
