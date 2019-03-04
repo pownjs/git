@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@pown/async": "^2.4.0",
-    "@pown/leaks": "^2.1.0",
+    "@pown/leaks": "^2.1.1",
     "isomorphic-git": "^0.51.12"
   },
   "engines": {
