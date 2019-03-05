@@ -30,7 +30,8 @@
     "@pown/async": "^2.5.0",
     "@pown/leaks": "^2.2.1",
     "isomorphic-git": "^0.51.12",
-    "istextorbinary": "^2.5.1"
+    "istextorbinary": "^2.5.1",
+    "moment": "^2.24.0"
   },
   "engines": {
     "node": ">=10.5.0"
