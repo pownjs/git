@@ -28,8 +28,9 @@
   },
   "dependencies": {
     "@pown/async": "^2.5.0",
-    "@pown/leaks": "^2.1.1",
-    "isomorphic-git": "^0.51.12"
+    "@pown/leaks": "^2.2.1",
+    "isomorphic-git": "^0.51.12",
+    "istextorbinary": "^2.5.1"
   },
   "engines": {
     "node": ">=10.5.0"
