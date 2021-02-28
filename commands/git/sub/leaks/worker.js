@@ -15,7 +15,10 @@ parentPort.on('message', async({ dir, oid }) => {
 
     if (isText(null, data)) {
         for (const leak of lp.iterateOverSearchPerCodeLine(data.toString())) {
-            parentPort.postMessage({ type: 'leak', leak })
+            const { check, ...rest } = leak
+            const { title, severity } = check
+
+            parentPort.postMessage({ type: 'leak', leak: { ...rest, check: { title, severity } } })
         }
     }
 

@@ -33,7 +33,7 @@ exports.yargs = {
 
         const refs = {}
 
-        for await (const { commit } of enumCommits({ fs, dir, ref })) {
+        for await (const commit of enumCommits({ fs, dir, ref })) {
             const { author = {}, committer = {} } = commit
 
             const { name: authorName = '', email: authorEmail = '' } = author
@@ -46,7 +46,7 @@ exports.yargs = {
                 console.log(authorRef)
 
                 if (outStream) {
-                    outStream.write(JSON.stringify({ author: authorRef }))
+                    outStream.write(JSON.stringify({ ref: authorRef, name: authorName, email: authorEmail }))
                 }
             }
 
@@ -60,7 +60,7 @@ exports.yargs = {
                 console.log(committerRef)
 
                 if (outStream) {
-                    outStream.write(JSON.stringify({ commiter: committerRef }))
+                    outStream.write(JSON.stringify({ ref: committerRef, name: authorName, email: authorEmail }))
                 }
             }
         }

@@ -1,6 +1,6 @@
 exports.yargs = {
     command: 'git <command>',
-    describe: 'GIT security toolkit',
+    describe: 'Git security toolkit',
 
     builder: (yargs) => {
         yargs.command(require('./sub/people').yargs)

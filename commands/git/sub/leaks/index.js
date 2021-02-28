@@ -92,7 +92,8 @@ exports.yargs = {
 
                 for await (const leak of iterateOverEmitter(ee, 'leak')) {
                     const { message, author, committer } = commit
-                    const { check, index, find } = leak
+                    const { check, line, index, find } = leak
+                    const { title, severity } = check
 
                     const { name: authorName = '', email: authorEmail = '' } = author
 
@@ -102,11 +103,11 @@ exports.yargs = {
 
                     const committerRef = `${committerName} <${committerEmail}>`
 
-                    results.push({ find, index, author: authorRef, commiter: committerRef, message })
+                    results.push({ title, severity, find, line, index, author: authorRef, commiter: committerRef, message })
                 }
 
                 if (results.length) {
-                    console.group(`${oid}/${path}`)
+                    console.group(`${path}@${oid}`)
                     console.table(results)
                     console.groupEnd()
 
