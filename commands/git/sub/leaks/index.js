@@ -45,6 +45,7 @@ exports.yargs = {
 
         const fs = require('fs')
         const path = require('path')
+        const process = require('process')
         const { EventEmitter } = require('events')
         const { Worker } = require('worker_threads')
         const { iterateOverEmitter } = require('@pown/async/lib/iterateOverEmitter')
@@ -56,6 +57,15 @@ exports.yargs = {
 
         if (write) {
             outStream = fs.createWriteStream(write)
+
+            const exitHandler = () => {
+                outStream.close()
+
+                process.exit(1)
+            }
+
+            process.on('SIGINT', exitHandler)
+            process.on('uncaughtException', exitHandler)
         }
 
         await Promise.all(Array(concurrency).fill(enumCommitFiles({ fs, dir, ref, depth })).map(async(it) => {
@@ -88,33 +98,56 @@ exports.yargs = {
 
                 worker.postMessage({ type: 'scan', dir, path, oid })
 
-                const results = []
+                const { message, author, committer } = commit
+
+                const { name: authorName = '', email: authorEmail = '', timestamp: authorTimestamp } = author
+
+                const authorRef = `${authorName} <${authorEmail}>`
+
+                const { name: committerName = '', email: committerEmail = '', timestamp: commiterTimestamp } = committer
+
+                const committerRef = `${committerName} <${committerEmail}>`
+
+                const timestamp = (commiterTimestamp || authorTimestamp) * 1000
+
+                const printResults = []
+                const saveResults = []
 
                 for await (const leak of iterateOverEmitter(ee, 'leak')) {
-                    const { message, author, committer } = commit
                     const { check, line, index, find } = leak
                     const { title, severity } = check
 
-                    const { name: authorName = '', email: authorEmail = '' } = author
-
-                    const authorRef = `${authorName} <${authorEmail}>`
-
-                    const { name: committerName = '', email: committerEmail = '' } = committer
-
-                    const committerRef = `${committerName} <${committerEmail}>`
-
-                    results.push({ title, severity, find, line, index, author: authorRef, commiter: committerRef, message })
+                    printResults.push({ title, severity, find, line, index, author: authorRef, message, timestamp })
+                    saveResults.push({ title, severity, find, line, index })
                 }
 
-                if (results.length) {
+                if (printResults.length) {
                     console.group(`${path}@${oid}`)
-                    console.table(results)
+                    console.table(printResults)
                     console.groupEnd()
 
                     if (outStream) {
                         const source = (await fetch({ fs, dir, oid })).toString()
 
-                        outStream.write(JSON.stringify({ location: { path, oid }, source, results }))
+                        outStream.write(JSON.stringify({
+                            location: { path, oid },
+
+                            source,
+
+                            author: {
+                                ...author,
+
+                                timestamp: authorTimestamp * 1000
+                            },
+
+                            committer: {
+                                ...committer,
+
+                                timestamp: commiterTimestamp * 1000
+                            },
+
+                            results: saveResults
+                        }))
                     }
                 }
             }
