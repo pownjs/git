@@ -29,9 +29,8 @@
   "dependencies": {
     "@pown/async": "^2.5.0",
     "@pown/leaks": "^2.14.0",
-    "isomorphic-git": "^0.51.12",
-    "istextorbinary": "^2.5.1",
-    "moment": "^2.24.0"
+    "isomorphic-git": "^1.8.1",
+    "istextorbinary": "^2.5.1"
   },
   "engines": {
     "node": ">=10.5.0"
