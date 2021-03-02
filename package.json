@@ -4,7 +4,7 @@
   "description": "Pownage guaranteed",
   "main": "lib/index.js",
   "scripts": {
-    "usage": "POWN_ROOT=. pown-cli git --help; echo; POWN_ROOT=. pown-cli git leaks --help; echo; POWN_ROOT. pown-cli git people --help",
+    "usage": "POWN_ROOT=. pown-cli git --help; echo; POWN_ROOT=. pown-cli git leaks --help; echo; POWN_ROOT=. pown-cli git people --help",
     "git": "POWN_ROOT=. pown-cli git",
     "script": "POWN_ROOT=. pown-cli script",
     "test": "true",
