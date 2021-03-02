@@ -14,7 +14,7 @@ parentPort.on('message', async({ dir, oid }) => {
     const data = await fetch({ fs, dir, oid })
 
     if (isText(null, data)) {
-        for (const leak of lp.iterateOverSearchPerCodeLine(data.toString())) {
+        for await (const leak of lp.iterateOverSearchPerCodeLine(data.toString())) {
             const { check, ...rest } = leak
             const { title, severity } = check
 
