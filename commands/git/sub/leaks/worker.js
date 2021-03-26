@@ -11,11 +11,11 @@ const { severity } = workerData
 
 const lp = new LeaksPilot({ database: compileDatabase(database), severity })
 
-parentPort.on('message', async({ dir, oid }) => {
+parentPort.on('message', async({ dir, path, oid }) => {
     const data = await fetch({ fs, dir, oid })
 
     if (isText(null, data)) {
-        for await (const leak of lp.iterateOverSearchPerCodeLine(data.toString())) {
+        for await (const leak of lp.iterateOverSearchPerCodeLine(data.toString(), { location: path })) {
             const { check, ...rest } = leak
             const { title, severity } = check
 
