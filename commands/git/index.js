@@ -3,6 +3,7 @@ exports.yargs = {
     describe: 'Git security toolkit',
 
     builder: (yargs) => {
+        yargs.command(require('./sub/clone').yargs)
         yargs.command(require('./sub/people').yargs)
         yargs.command(require('./sub/leaks').yargs)
     }
