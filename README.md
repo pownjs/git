@@ -96,7 +96,7 @@ Search for leaks in git repository
 Options:
   --version          Show version number  [boolean]
   --help             Show help  [boolean]
-  --ref, -r          GIT ref  [string] [default: "master"]
+  --ref, -r          GIT ref  [string]
   --depth, -d        Commit history depth  [number] [default: Infinity]
   --concurrency, -c  Number of workers  [number] [default: 10]
   --severity, -t     Miminum severity level  [number] [default: 0]
@@ -109,7 +109,7 @@ Extract all authors and committers in repository
 Options:
   --version    Show version number  [boolean]
   --help       Show help  [boolean]
-  --ref        GIT ref  [string] [default: "master"]
+  --ref        GIT ref  [string]
   --write, -w  Write results to file  [string] [default: ""]
 ```
 
