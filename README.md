@@ -81,8 +81,9 @@ pown-cli git <command>
 Git security toolkit
 
 Commands:
-  pown-cli git people <repo>  Extract all authors and committers in repository  [aliases: p]
-  pown-cli git leaks <repo>   Search for leaks in git repository  [aliases: l, leak]
+  pown-cli git clone <url> [dir]  Clone git repository  [aliases: c]
+  pown-cli git people <repo>      Extract all authors and committers in repository  [aliases: p]
+  pown-cli git leaks <repo>       Search for leaks in git repository  [aliases: l, leak]
 
 Options:
   --version  Show version number  [boolean]
