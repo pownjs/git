@@ -6,8 +6,7 @@ exports.yargs = {
     builder: {
         ref: {
             describe: 'GIT ref',
-            type: 'string',
-            default: 'master'
+            type: 'string'
         },
 
         write: {

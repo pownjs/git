@@ -7,8 +7,7 @@ exports.yargs = {
         ref: {
             alias: 'r',
             describe: 'GIT ref',
-            type: 'string',
-            default: 'master'
+            type: 'string'
         },
 
         depth: {
