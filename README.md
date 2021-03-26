@@ -89,6 +89,16 @@ Options:
   --version  Show version number  [boolean]
   --help     Show help  [boolean]
 
+pown-cli git clone <url> [dir]
+
+Clone git repository
+
+Options:
+  --version        Show version number  [boolean]
+  --help           Show help  [boolean]
+  --ref            Which branch to checkout. By default this is the designated "main branch" of the repository.  [string]
+  --single-branch  Instead of the default behavior of fetching all the branches, only fetch a single branch.  [boolean] [default: true]
+  --depth          Integer. Determines how much of the git repository's history to retrieve  [number] [default: 1000]
 pown-cli git leaks <repo>
 
 Search for leaks in git repository
