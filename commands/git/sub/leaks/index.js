@@ -6,36 +6,35 @@ exports.yargs = {
     builder: {
         ref: {
             alias: 'r',
-            describe: 'GIT ref',
+            describe: 'Which branch to scan. By default this is the designated "main branch" of the repository.',
             type: 'string'
         },
 
         depth: {
             alias: 'd',
-            describe: 'Commit history depth',
+            describe: 'Determines how much of the git repository\'s history to retrieve.',
             type: 'number',
             default: Infinity
         },
 
         concurrency: {
             alias: 'c',
-            describe: 'Number of workers',
+            describe: 'Number of workers.',
             type: 'number',
             default: 10
         },
 
         severity: {
-            alias: 't',
-            describe: 'Miminum severity level',
+            alias: 's',
+            describe: 'Miminum severity level.',
             type: 'number',
             default: 0
         },
 
         write: {
             alias: 'w',
-            describe: 'Write results to file',
-            type: 'string',
-            default: ''
+            describe: 'Write results to file.',
+            type: 'string'
         }
     },
 
@@ -67,7 +66,7 @@ exports.yargs = {
             process.on('uncaughtException', exitHandler)
         }
 
-        await Promise.all(Array(concurrency).fill(enumCommitFiles({ fs, dir, ref, depth })).map(async(it) => {
+        await Promise.all(Array(concurrency).fill(enumCommitFiles({ dir, ref, depth })).map(async(it) => {
             const worker = new Worker(path.join(__dirname, '..', '..', '..', '..', 'lib', 'leaks', 'worker.js'), { workerData: { severity } })
 
             const ee = new EventEmitter()

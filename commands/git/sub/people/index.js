@@ -5,20 +5,27 @@ exports.yargs = {
 
     builder: {
         ref: {
-            describe: 'GIT ref',
+            alias: 'r',
+            describe: 'Which branch to scan. By default this is the designated "main branch" of the repository.',
             type: 'string'
+        },
+
+        depth: {
+            alias: 'd',
+            describe: 'Determines how much of the git repository\'s history to retrieve.',
+            type: 'number',
+            default: Infinity
         },
 
         write: {
             alias: 'w',
-            describe: 'Write results to file',
-            type: 'string',
-            default: ''
+            describe: 'Write results to file.',
+            type: 'string'
         }
     },
 
     handler: async(argv) => {
-        const { ref, write, repo: dir } = argv
+        const { ref, depth, write, repo: dir } = argv
 
         const fs = require('fs')
 
@@ -32,7 +39,7 @@ exports.yargs = {
 
         const refs = {}
 
-        for await (const commit of enumCommits({ fs, dir, ref })) {
+        for await (const commit of enumCommits({ dir, ref, depth })) {
             const { author = {}, committer = {} } = commit
 
             const { name: authorName = '', email: authorEmail = '' } = author
