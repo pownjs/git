@@ -35,7 +35,7 @@
     "@pown/toolchain": "^2.5.0"
   },
   "dependencies": {
-    "@pown/async": "^2.13.0",
+    "@pown/async": "^2.13.1",
     "@pown/leaks": "^2.29.0",
     "isomorphic-git": "^1.8.2",
     "istextorbinary": "^2.5.1"
