@@ -26,13 +26,13 @@
   },
   "homepage": "https://github.com/pownjs/pown-git#readme",
   "devDependencies": {
-    "@pown/cli": "^2.30.0",
-    "@pown/toolchain": "^2.1.0"
+    "@pown/cli": "^2.33.0",
+    "@pown/toolchain": "^2.5.0"
   },
   "dependencies": {
-    "@pown/async": "^2.5.0",
-    "@pown/leaks": "^2.27.0",
-    "isomorphic-git": "^1.8.1",
+    "@pown/async": "^2.13.0",
+    "@pown/leaks": "^2.29.0",
+    "isomorphic-git": "^1.8.2",
     "istextorbinary": "^2.5.1"
   },
   "engines": {
