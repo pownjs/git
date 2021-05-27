@@ -4,9 +4,10 @@
   "description": "Pownage guaranteed",
   "main": "lib/index.js",
   "scripts": {
-    "usage": "POWN_ROOT=. pown-cli git --help; echo; POWN_ROOT=. pown-cli git clone --help; POWN_ROOT=. pown-cli git leaks --help; echo; POWN_ROOT=. pown-cli git people --help",
     "git": "POWN_ROOT=. pown-cli git",
+    "recon": "POWN_ROOT=. pown-cli recon",
     "script": "POWN_ROOT=. pown-cli script",
+    "usage": "POWN_ROOT=. pown-cli git --help; echo; POWN_ROOT=. pown-cli git clone --help; POWN_ROOT=. pown-cli git leaks --help; echo; POWN_ROOT=. pown-cli git people --help",
     "test": "true",
     "build": "true"
   },
@@ -25,8 +26,12 @@
     "url": "https://github.com/pownjs/pown-git/issues"
   },
   "homepage": "https://github.com/pownjs/pown-git#readme",
+  "peerDependencies": {
+    "@pown/recon": "^2.156.0"
+  },
   "devDependencies": {
     "@pown/cli": "^2.33.0",
+    "@pown/recon": "^2.156.0",
     "@pown/toolchain": "^2.5.0"
   },
   "dependencies": {
@@ -41,6 +46,9 @@
   "pown": {
     "commands": [
       "commands/git"
+    ],
+    "transforms": [
+      "transforms/git"
     ]
   },
   "browserify": {
