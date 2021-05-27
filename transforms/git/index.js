@@ -39,7 +39,7 @@ class gitLeaks extends Transform {
             alias: 'c',
             describe: 'Number of workers.',
             type: 'number',
-            default: 10
+            default: 1
         },
 
         severity: {
@@ -113,7 +113,7 @@ class gitLeaks extends Transform {
             const { check, line, index, find } = leak
             const { title, severity } = check
 
-            yield { type: 'git:leak', label: find, props: { title, severity, find, line, index, authorName, authorEmail, message, timestamp }, source: [source] }
+            yield { type: 'git:leak', label: find, props: { title, severity, find, line, index, authorName, authorEmail, message, timestamp }, edges: [source] }
         }
 
         this.info('scanning', 'done')
