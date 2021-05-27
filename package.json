@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@pown/cli": "^2.33.0",
-    "@pown/recon": "^2.158.1",
+    "@pown/recon": "^2.159.0",
     "@pown/toolchain": "^2.5.0"
   },
   "dependencies": {
