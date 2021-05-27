@@ -103,9 +103,7 @@ exports.yargs = {
 
                 const authorRef = `${authorName} <${authorEmail}>`
 
-                const { name: committerName = '', email: committerEmail = '', timestamp: commiterTimestamp } = committer
-
-                const committerRef = `${committerName} <${committerEmail}>`
+                const { timestamp: commiterTimestamp } = committer
 
                 const timestamp = (commiterTimestamp || authorTimestamp) * 1000
 
