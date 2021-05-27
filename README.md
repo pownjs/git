@@ -81,7 +81,7 @@ pown-cli git <command>
 Git security toolkit
 
 Commands:
-  pown-cli git clone <url> [dir]  Clone git repository  [aliases: c]
+  pown-cli git clone <uri> [dir]  Clone git repository  [aliases: c]
   pown-cli git people <repo>      Extract all authors and committers in repository  [aliases: p]
   pown-cli git leaks <repo>       Search for leaks in git repository  [aliases: l, leak]
 
@@ -89,16 +89,17 @@ Options:
   --version  Show version number  [boolean]
   --help     Show help  [boolean]
 
-pown-cli git clone <url> [dir]
+pown-cli git clone <uri> [dir]
 
 Clone git repository
 
 Options:
-  --version        Show version number  [boolean]
-  --help           Show help  [boolean]
-  --ref            Which branch to checkout. By default this is the designated "main branch" of the repository.  [string]
-  --single-branch  Instead of the default behavior of fetching all the branches, only fetch a single branch.  [boolean] [default: true]
-  --depth          Integer. Determines how much of the git repository's history to retrieve  [number] [default: 1000]
+  --version           Show version number  [boolean]
+  --help              Show help  [boolean]
+  --ref, -r           Which branch to checkout. By default this is the designated "main branch" of the repository.  [string]
+  --depth, -d         Determines how much of the git repository's history to retrieve.  [number] [default: 10000]
+  --singleBranch, -b  Instead of the default behavior of fetching all the branches, only fetch a single branch.  [boolean] [default: true]
+  --githubKey         GitHub API Key. The key is either in the format username:password or username:token.  [string]
 pown-cli git leaks <repo>
 
 Search for leaks in git repository
@@ -106,11 +107,11 @@ Search for leaks in git repository
 Options:
   --version          Show version number  [boolean]
   --help             Show help  [boolean]
-  --ref, -r          GIT ref  [string]
-  --depth, -d        Commit history depth  [number] [default: Infinity]
-  --concurrency, -c  Number of workers  [number] [default: 10]
-  --severity, -t     Miminum severity level  [number] [default: 0]
-  --write, -w        Write results to file  [string] [default: ""]
+  --ref, -r          Which branch to scan. By default this is the designated "main branch" of the repository.  [string]
+  --depth, -d        Determines how much of the git repository's history to retrieve.  [number] [default: Infinity]
+  --concurrency, -c  Number of workers.  [number] [default: 10]
+  --severity, -s     Miminum severity level.  [number] [default: 0]
+  --write, -w        Write results to file.  [string]
 
 pown-cli git people <repo>
 
@@ -119,8 +120,9 @@ Extract all authors and committers in repository
 Options:
   --version    Show version number  [boolean]
   --help       Show help  [boolean]
-  --ref        GIT ref  [string]
-  --write, -w  Write results to file  [string] [default: ""]
+  --ref, -r    Which branch to scan. By default this is the designated "main branch" of the repository.  [string]
+  --depth, -d  Determines how much of the git repository's history to retrieve.  [number] [default: Infinity]
+  --write, -w  Write results to file.  [string]
 ```
 
 ## How To Contribute
