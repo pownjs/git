@@ -68,7 +68,7 @@ exports.yargs = {
         }
 
         await Promise.all(Array(concurrency).fill(enumCommitFiles({ fs, dir, ref, depth })).map(async(it) => {
-            const worker = new Worker(path.join(__dirname, 'worker.js'), { workerData: { severity } })
+            const worker = new Worker(path.join(__dirname, '..', '..', '..', '..', 'lib', 'leaks', 'worker.js'), { workerData: { severity } })
 
             const ee = new EventEmitter()
 
