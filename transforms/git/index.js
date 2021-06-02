@@ -16,34 +16,28 @@ class gitLeaks extends Transform {
 
     static options = {
         ref: {
-            alias: 'r',
             describe: 'Which branch to checkout. By default this is the designated "main branch" of the repository.',
             type: 'string'
         },
 
         depth: {
-            alias: 'd',
             describe: 'Determines how much of the git repository\'s history to retrieve.',
-            type: 'number',
-            default: 10000
+            type: 'number'
         },
 
         singleBranch: {
-            alias: 'b',
             describe: 'Instead of the default behavior of fetching all the branches, only fetch a single branch.',
             type: 'boolean',
             default: true
         },
 
         concurrency: {
-            alias: 'c',
             describe: 'Number of workers.',
             type: 'number',
             default: 1
         },
 
         severity: {
-            alias: 's',
             describe: 'Miminum severity level.',
             type: 'number',
             default: 0
@@ -97,7 +91,7 @@ class gitLeaks extends Transform {
             singleBranch: singleBranch,
         })
 
-        this.info('clonning', 'done')
+        this.info('clonning', uri, 'done')
 
         this.info('scanning', dir)
 
@@ -116,7 +110,7 @@ class gitLeaks extends Transform {
             yield { type: 'git:leak', label: find, props: { title, severity, find, line, index, authorName, authorEmail, message, timestamp }, edges: [source] }
         }
 
-        this.info('scanning', 'done')
+        this.info('scanning', dir, 'done')
     }
 }
 
