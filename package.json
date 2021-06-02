@@ -30,13 +30,13 @@
     "@pown/recon": "^2.156.0"
   },
   "devDependencies": {
-    "@pown/cli": "^2.33.0",
-    "@pown/recon": "^2.159.0",
+    "@pown/cli": "^2.35.0",
+    "@pown/recon": "^2.164.3",
     "@pown/toolchain": "^2.5.0"
   },
   "dependencies": {
-    "@pown/async": "^2.13.1",
-    "@pown/leaks": "^2.29.0",
+    "@pown/async": "^2.15.0",
+    "@pown/leaks": "^2.30.1",
     "isomorphic-git": "^1.8.2",
     "istextorbinary": "^2.5.1"
   },
